@@ -1,4 +1,4 @@
-### docker study
+# docker study
 - '완벽한 IT 인프라 구축을 위한 Docker' 책을 읽고 기억해야할 내용 정리
 - 책 외적으로 docker에 대해 알게 되는 내용 추가
 
