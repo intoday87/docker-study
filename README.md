@@ -40,3 +40,9 @@
     ```
 - `docker export nginx1 > latest.tar` 컨테이너를 tar로 export 할 수도 있다
   - `tar -tvf latest.tar` 로 tar에 어떻게 구성되어 있는지 확인해본다
+- `$ cat latest.tar | docker import - webap:1.0` tar를 이미지로 import 가능
+- `docker save -o export.tar centos` 이미지를 tar로 변환하는 또 다른 커맨드
+- `docker load -i export.tar` tar를 이미지로 로드
+- export/save의 차이
+  - export로 tar를 만든 후 파일 구조를 보면 컨테이너 동작에 필요한 파일이 모두 압축된다
+  - save로 만든 tar는 풀어보면 실제 구동하는데 필요한 구조가 아니라 해시로된 레이어 파일등 centos기준으로 os에 루트부터의 경로가 아닌 다른 파일들로 구성되어 있다
