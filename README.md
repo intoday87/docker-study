@@ -32,3 +32,11 @@
     ...
     ```
     A: 추가, C: 변경, D: 삭제 
+- `docker commit -a 'message' nginx1 intoday87/webfront:1.0` 도커는 이미지로 컨테이너를 보통 생성하지만 컨테이너로 이미지를 생성할 수 있다
+  - ```
+    $ docker images
+    REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+    intoday87/webfront  1.0                 770ad0b09a1c        5 minutes ago       109MB
+    ```
+- `docker export nginx1 > latest.tar` 컨테이너를 tar로 export 할 수도 있다
+  - `tar -tvf latest.tar` 로 tar에 어떻게 구성되어 있는지 확인해본다
