@@ -15,3 +15,4 @@
 - `dockr rm {컨테이너id}` 컨테이너 삭제
 - `docker port` 컨테이너와 호스트의 포트매칭 정보 출력
 - `docker rename oldName newName` 컨테이너 기존 이름을 변경한다
+- `docker cp {컨테이너 이름}:/var/log/nginx/acccess.log ./Document/host` 컨테이너 파일을 호스트 경로로 복사해올 때 
