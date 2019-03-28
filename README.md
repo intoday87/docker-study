@@ -65,3 +65,16 @@
   - 파일명이 Dockerfile(확장자 없음)아닐때에는 `-f` 옵션을 사용한다. *__파일명이 다를 경우에는 Docker Hub에서 이미지가 자동생성되지 않으므로 주의!__*
   - 파일명이 달라서 표준 입력을 통해 build 가능 `docker build - < MyDockerfile` *__하이픈을 넣는것에 주의하자__*
     - 이러한 경우 `ADD` 명령어로 이미지 내에 파일을 추가할 수 없는등 build에 필수적인 파일 포함 할 수 없다
+  - docker는 image를 build할 때 자동으로 캐시를 생성하고 다른 이미지를 build할 때 캐시를 사용해서 build 속도를 높인다
+    아래는 Dockerfile을 통해 image를 이름만 바꿔서 3번째 생성했을때 `Using cache`가 표시되면서 캐시를 사용한다. 물론 2번째도 이랬을것이다
+    ```
+    $  docker build -t sample:3.0 ./
+    Sending build context to Docker daemon  2.048kB
+    Step 1/2 : FROM centos:latest@sha256:8d487d68857f5bc9595793279b33d082b03713341ddec91054382641d14db861
+     ---> 9f38484d220f
+    Step 2/2 : MAINTAINER DONGHO LEE intoday1987@gmail.com
+     ---> Using cache
+     ---> 7fcc1bf1d4e7
+    Successfully built 7fcc1bf1d4e7
+    Successfully tagged sample:3.0
+    ```
