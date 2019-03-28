@@ -61,4 +61,5 @@
   FROM [이미지명]@[Digest]
   ```
 - Dockerfile로 이미지 생성하기
-  - `docker build -t [생성할 이미지 명]:[태그명 ex_) latest) [Dockerfile 디렉토리 경로]
+  - `docker build -t [생성할 이미지 명]:[태그명 ex_) latest) [Dockerfile 디렉토리 경로]`
+  - 파일명이 Dockerfile(확장자 없음)아닐때에는 `-f` 옵션을 사용한다
