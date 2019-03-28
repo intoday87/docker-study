@@ -64,3 +64,4 @@
   - `docker build -t [생성할 이미지 명]:[태그명 ex_) latest) [Dockerfile 디렉토리 경로]`
   - 파일명이 Dockerfile(확장자 없음)아닐때에는 `-f` 옵션을 사용한다. *__파일명이 다를 경우에는 Docker Hub에서 이미지가 자동생성되지 않으므로 주의!__*
   - 파일명이 달라서 표준 입력을 통해 build 가능 `docker build - < MyDockerfile` *__하이픈을 넣는것에 주의하자__*
+    - 이러한 경우 `ADD` 명령어로 이미지 내에 파일을 추가할 수 없는등 build에 필수적인 파일 포함 할 수 없다
