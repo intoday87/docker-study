@@ -60,3 +60,5 @@
   FROM [이미지명]:[태그명]
   FROM [이미지명]@[Digest]
   ```
+- Dockerfile로 이미지 생성하기
+  - `docker build -t [생성할 이미지 명]:[태그명 ex_) latest) [Dockerfile 경로]
