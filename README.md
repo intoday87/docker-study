@@ -95,3 +95,24 @@
   MAINTAINER NICK LEE some@email.com
   ```
   `docker build -t sample .`로 실행하면 주석 순서대로 스텝별로 진행상황 로그를 볼 수 있고 이미지가 latest 태그로 생성된다
+  ```/bin/bash
+  Step 1/5 : FROM centos:latest@sha256:8d487d68857f5bc9595793279b33d082b03713341ddec91054382641d14db861
+   ---> 9f38484d220f
+  Step 2/5 : RUN yum install -y httpd
+   ---> Using cache
+   ---> a8fd53234775
+  Step 3/5 : COPY index.html /var/www/html/
+   ---> c408bdf7d909
+  Step 4/5 : CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+   ---> Running in 03db1eb864fd
+  Removing intermediate container 03db1eb864fd
+   ---> eab105b2993f
+  Step 5/5 : MAINTAINER NICK LEE some@email.com
+   ---> Running in 80a55dc05ec0
+  Removing intermediate container 80a55dc05ec0
+   ---> cfa36a17bc35
+  Successfully built cfa36a17bc35
+  Successfully tagged sample:latest
+  ```
+  결과를 보면 각 스텝별로 hash를 출력하는데 base image로 부터 각각의 이미지가 생성되어 중첩되어간다. 이래서 diff만 따로 땡겨와서 이미지를 실행할 수 있는듯.
+  Using cache는 이 이 이미지를 생성한것이 첫 번째가 실패해서 두 번째 실행한결과여서 그런데 첫 번째와는 달리 apache를 설치한것이 이미지로 캐시가 되어서 두 번째는 cache를 사용하게 되었다
