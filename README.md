@@ -131,3 +131,30 @@
   RUN ["echo", "안녕하세요 Exec형식입니다"]
   RUN ["/bin/bash", "-c", "echo '안녕하세요 Exec형식으로 bash를 사용해봅시다'"]
   ```
+  이미지 생성시 출력 결과
+  ```/bin/bash
+  $ docker build -t sample .
+  Sending build context to Docker daemon  3.072kB
+  Step 1/5 : FROM centos:latest
+   ---> 9f38484d220f
+  Step 2/5 : MAINTAINER DONGHO LEE intoday1987@gmail.com
+   ---> Using cache
+   ---> 7fcc1bf1d4e7
+  Step 3/5 : RUN echo 안녕하세요 Shell형식입니다
+   ---> Running in 10bfa44cd571
+  안녕하세요 Shell형식입니다
+  Removing intermediate container 10bfa44cd571
+   ---> 622fe4988c28
+  Step 4/5 : RUN ["echo", "안녕하세요 Exec형식입니다"]
+   ---> Running in 5942455a0124
+  안녕하세요 Exec형식입니다
+  Removing intermediate container 5942455a0124
+   ---> 91f228a97ebf
+  Step 5/5 : RUN ["/bin/bash", "-c", "echo '안녕하세요 Exec형식으로 bash를 사용해봅시다'"]
+   ---> Running in 15736f4955b4
+  안녕하세요 Exec형식으로 bash를 사용해봅시다
+  Removing intermediate container 15736f4955b4
+   ---> dfa91bbe00b0
+  Successfully built dfa91bbe00b0
+  Successfully tagged sample:latest
+  ```
