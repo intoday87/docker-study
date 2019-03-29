@@ -83,7 +83,7 @@
   # 베이스 이미지 설정
   FROM centos:latest@sha256:8d487d68857f5bc9595793279b33d082b03713341ddec91054382641d14db861
 
-  # STEP:1 Apache 설치
+  # STEP:1 Apache 설치 Docker 컨테이너에서 /bin/sh -c 로 커맨드를 실행하는 방식과 동일
   RUN yum install -y httpd
 
   # STEP:2 파일 복사 index.html은 Dockerfile 경로
