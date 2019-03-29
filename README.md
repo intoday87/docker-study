@@ -124,7 +124,7 @@
   FROM centos:latest
 
   # 작성자 정보
-  MAINTAINER DONGHO LEE intoday1987@gmail.com
+  MAINTAINER NICK LEE some@email.com
 
   # Run 명령 실행
   RUN echo 안녕하세요 Shell형식입니다
