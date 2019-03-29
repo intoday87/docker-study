@@ -84,6 +84,8 @@
   FROM centos:latest@sha256:8d487d68857f5bc9595793279b33d082b03713341ddec91054382641d14db861
 
   # STEP:1 Apache 설치 Docker 컨테이너에서 /bin/sh -c 로 커맨드를 실행하는 방식과 동일
+  # shell을 변경하고 싶으면 아래와 같이 할 수 있다. 그런데 신기한건 이렇게 명령어가 바뀌면 cache를 사용하지 않고 새로 설치 하더라
+  # RUN ["/bin/bash", "-c", "yum -y install httpd"]
   RUN yum install -y httpd
 
   # STEP:2 파일 복사 index.html은 Dockerfile 경로
