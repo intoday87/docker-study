@@ -78,3 +78,20 @@
     Successfully built 7fcc1bf1d4e7
     Successfully tagged sample:3.0
     ```
+- Dockerfile로 apache 띄우기
+  ```Dockerfile
+  # 베이스 이미지 설정
+  FROM centos:latest@sha256:8d487d68857f5bc9595793279b33d082b03713341ddec91054382641d14db861
+
+  # STEP:1 Apache 설치
+  RUN yum install -y httpd
+
+  # STEP:2 파일 복사 index.html은 Dockerfile 경로
+  COPY index.html /var/www/html/
+
+  # STEP:3 Apache 구동
+  CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+
+  MAINTAINER NICK LEE some@email.com
+  ```
+  `docker build -t sample .`로 실행하면 주석 순서대로 스텝별로 진행상황 로그를 볼 수 있고 이미지가 latest 태그로 생성된다
