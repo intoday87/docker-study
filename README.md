@@ -118,3 +118,16 @@
   ```
   결과를 보면 각 스텝별로 hash를 출력하는데 base image로 부터 각각의 이미지가 생성되어 중첩되어간다. 이래서 diff만 따로 땡겨와서 이미지를 실행할 수 있는듯.
   Using cache는 이 이 이미지를 생성한것이 첫 번째가 실패해서 두 번째 실행한결과여서 그런데 첫 번째와는 달리 apache를 설치한것이 이미지로 캐시가 되어서 두 번째는 cache를 사용하게 되었다
+- Exec 형식으로 RUN 실행
+  ```Dockerfile
+  # 베이스 이미지 설정
+  FROM centos:latest
+
+  # 작성자 정보
+  MAINTAINER DONGHO LEE intoday1987@gmail.com
+
+  # Run 명령 실행
+  RUN echo 안녕하세요 Shell형식입니다
+  RUN ["echo", "안녕하세요 Exec형식입니다"]
+  RUN ["/bin/bash", "-c", "echo '안녕하세요 Exec형식으로 bash를 사용해봅시다'"]
+  ```
