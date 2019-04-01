@@ -170,3 +170,24 @@
   <missing>           2 weeks ago         /bin/sh -c #(nop) ADD file:074f2c974463ab38c…   202MB
   ```
   **exec 형식으로 실행된 명령어는 Shell을 거치지 않고 실행되었음을 알 수 있다**
+  _Dockerfile을 build하면 명령어가 한 행씩 실행되며 이미지도 하나씩 생성된다. 하지만 스토리지 드라이브에 따라 그 수에는 상한선이 있다_
+  _이 책에서 다룬 Docker Toolbox의 Boot2Docker에서는 AUFS로 변경 이미지를 관리하고 있지만 AUFS는 변경분의 127 레이어 까지만 관리할 수 있다._
+  `INFO[0107] Cannot create container with more than 127 parents`
+  -> 이를 피하기 위해 명령어 수를 줄여야 한다 -> 한 행에 RUN 명령어를 적는게 좋다. 아래와 같이 실행하면 4개의 레이어가 생성된다
+  ```
+  RUN yum -y install httpd
+  RUN yum -y install php
+  RUN yum -y install php-mbstring
+  RUN yum -y install php-pear
+  ```
+  하지만 다음 예에서는 한 개의 레이어만 사용된다.( 레이어는 명령어 별로 생성되는 개별 이미지를 의미하는것 같다 )
+  `RUN yum -y install httpd php php-mbstring php-pear`
+  또한 RUN 명령은 `\`으로 개행할 수 있다. 가독성을 높여 커맨드 내용을 알아보기 쉽게 하려면 개행을 사용하면 좋다
+  ```
+  RUN yum -y install\
+              httpd\
+              php\
+              php-mbstring\
+              php-pear
+  ```
+  
