@@ -169,3 +169,4 @@
   <missing>           2 weeks ago         /bin/sh -c #(nop)  LABEL org.label-schema.sc…   0B
   <missing>           2 weeks ago         /bin/sh -c #(nop) ADD file:074f2c974463ab38c…   202MB
   ```
+  **exec 형식으로 실행된 명령어는 Shell을 거치지 않고 실행되었음을 알 수 있다**
