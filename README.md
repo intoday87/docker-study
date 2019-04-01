@@ -158,7 +158,7 @@
   Successfully built dfa91bbe00b0
   Successfully tagged sample:latest
   ```
-- `docker history [OPTIONS] IMAGE`로 어떻게 생성이 되었는지 확인할 수 있다
+- `docker history [OPTIONS] IMAGE`로 어떻게 이미지가 생성이 되었는지 확인할 수 있다
   ```
   IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
   dfa91bbe00b0        3 days ago          /bin/bash -c echo '안녕하세요 Exec형식으로 b…            0B
