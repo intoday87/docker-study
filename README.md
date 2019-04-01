@@ -158,3 +158,14 @@
   Successfully built dfa91bbe00b0
   Successfully tagged sample:latest
   ```
+- `docker history [OPTIONS] IMAGE`로 어떻게 생성이 되었는지 확인할 수 있다
+  ```
+  IMAGE               CREATED             CREATED BY                                      SIZE                COMMENT
+  dfa91bbe00b0        3 days ago          /bin/bash -c echo '안녕하세요 Exec형식으로 b…            0B
+  91f228a97ebf        3 days ago          echo 안녕하세요 Exec형식입니다                            0B
+  622fe4988c28        3 days ago          /bin/sh -c echo 안녕하세요 Shell형식입니다                0B
+  7fcc1bf1d4e7        4 days ago          /bin/sh -c #(nop)  MAINTAINER NICK WILDE int…   0B
+  9f38484d220f        2 weeks ago         /bin/sh -c #(nop)  CMD ["/bin/bash"]            0B
+  <missing>           2 weeks ago         /bin/sh -c #(nop)  LABEL org.label-schema.sc…   0B
+  <missing>           2 weeks ago         /bin/sh -c #(nop) ADD file:074f2c974463ab38c…   202MB
+  ```
