@@ -213,3 +213,26 @@
   - 그럼 차이점은?
     `ENTRYPOINT`와 `CMD`와의 차이는 `docker run`커맨드 실행 시점에서의 동작
     `CMD` 명령은 컨테이너를 구동할 때 정의한 커맨드보다 `docker run` 커맨드의 값으로 입력된 새로운 커맨드가 우선 실행
+    ```Dockerfile
+    # 베이스 이미지 설정
+    FROM centos:latest
+
+    # 작성자 정보
+    MAINTAINER DONGHO LEE intoday1987@gmail.com
+
+    # Run 명령 실행
+    RUN ["yum","-y","install", "httpd"]
+
+    # nginx 설치
+    RUN ["rpm", "-Uvh", "http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm"]
+
+    RUN ["yum", "install", "-y", "nginx"]
+
+    # Apache httpd 실행
+    ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+    ```
+    Dockerfile에 내용을 이렇게 채우고
+    `docker build -t sample .` 실행해서 이미지 만든 후
+    `docker run -d -p 8080:80 sample /usr/sbin/nginx -g 'deamon off;'` 실행하면
+    `CMD`인 경우 nginx가 실행되서 접속됨 `docker run` 명령어에 넘어온 쉘 실행이 덮어 씌워진다
+    `ENTRYPOINT`인 경우 nginx가 실행되지 않음
