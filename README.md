@@ -211,3 +211,5 @@
   ENTRYPOINT /usr/sbin/httpd -D FOREGROUND
   ```
   - 그럼 차이점은?
+    `ENTRYPOINT`와 `CMD`와의 차이는 `docker run`커맨드 실행 시점에서의 동작
+    `CMD` 명령은 컨테이너를 구동할 때 정의한 커맨드보다 `docker run` 커맨드의 값으로 입력된 새로운 커맨드가 우선 실행
