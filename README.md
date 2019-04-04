@@ -202,4 +202,12 @@
   # exec 형식으로 CMD 실행
   CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
   ```
-              
+- 데몬 실행(ENTRYPOINT)
+  - CMD와 사용방법은 동일하다
+  ```Dockerfile
+  ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+  ```
+  ```
+  ENTRYPOINT /usr/sbin/httpd -D FOREGROUND
+  ```
+  - 그럼 차이점은?
