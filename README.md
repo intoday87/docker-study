@@ -194,6 +194,7 @@
   - 이미지를 실행하기 위해 실행되는 커맨드는 `RUN` 명령어에 입력하지만 컨테이너에서 실행되는 커맨드는 `CMD` 명령어를 사용한다
   - Dockerfile에는 한 개의 `CMD`명령어만 입력할 수 있으며, 만약 여러 개를 입력한 경우 마지막 커맨드만 적용된다
   ```Dockerfile
+  # shell 형식으로 CMD 실행
   CMD /usr/sbin/httpd -D FOREGROUND
   ```
   또는
