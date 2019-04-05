@@ -235,4 +235,7 @@
     `docker build -t sample .` 실행해서 이미지 만든 후
     `docker run -d -p 8080:80 sample /usr/sbin/nginx -g 'deamon off;'` 실행하면
     `CMD`인 경우 nginx가 실행되서 접속됨 `docker run` 명령어에 넘어온 쉘 실행이 덮어 씌워진다
+      - 이처럼 CMD 명령은 `docker run`에서 데몬으로 실행하는 커맨드를 우선시한다
     `ENTRYPOINT`인 경우 nginx가 실행되지 않음
+      - 컨테이너 구동 시 특정 데몬을 강제적으로 실행시키고자 할 때 사용한다
+      - `ENTRYPOINT`가 여러개 입력되어 있는 겅우 가장 마지막 명령어가 실행
