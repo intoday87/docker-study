@@ -271,7 +271,4 @@
   
   CMD ["/bin/bash", "-c", "echo 'hello i`m another'"]
   ```
-  ```
-  ```
-  # another sample
   
