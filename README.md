@@ -271,4 +271,5 @@
   
   CMD ["/bin/bash", "-c", "echo 'hello i`m another'"]
   ```
-  
+  주로 이미지내 심어진 프로그램을 deploy하는 명령(ADD, COPY)을 입력한다
+  `ONBUILD ADD index.html /var/www/html/`
