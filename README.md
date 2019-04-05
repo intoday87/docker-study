@@ -239,3 +239,17 @@
     `ENTRYPOINT`인 경우 nginx가 실행되지 않음
       - 컨테이너 구동 시 특정 데몬을 강제적으로 실행시키고자 할 때 사용한다
       - `ENTRYPOINT`가 여러개 입력되어 있는 겅우 가장 마지막 명령어가 실행
+- ENTRYPOINT와 CMD의 조합
+  ```Dockerfile
+  # Docker base image
+  FROM centos:latest
+  
+  # top 커맨드 실행
+  ENTRYPOINT ["top']
+  # -d 옵션으로 10초 마다 업데이트 -> run 커맨드에서 바꿀수 있다
+  CMD ["-d", "10"]
+  ```/bin/bash
+  $ docker run -it sample
+  # 2초 간격으로 업데이트하는 경우
+  $ docer run -it sample -d 2
+  ```
