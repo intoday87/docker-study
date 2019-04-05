@@ -248,6 +248,8 @@
   ENTRYPOINT ["top']
   # -d 옵션으로 10초 마다 업데이트 -> run 커맨드에서 바꿀수 있다
   CMD ["-d", "10"]
+  ```
+  실행해보기
   ```/bin/bash
   $ docker run -it sample
   # 2초 간격으로 업데이트하는 경우
