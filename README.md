@@ -255,3 +255,23 @@
   # 2초 간격으로 업데이트하는 경우
   $ docer run -it sample -d 2
   ```
+- ONBUILD [실행하고자 하는 커맨드]
+  이미지 내의 다음 build에서 실행되는 커맨드를 설정하는 명령어
+  한 Dockerfile에서 ONBUILD 명령으로 커맨드를 실행하도록 설정하고, build하여 이미지를 생성하고, 생성된 이미지를 다른 Dockerfile에서 베이스이미지로 설정하여 build하면, ONBUILD 커맨드가 실행된다
+  ```Dockerfile
+  # sample
+  FROM centos:latest
+  
+  CMD ["/bin/bash", "-c", "echo 'hello i`m sample'"]
+  
+  ONBUILD RUN ["bin/bash", "-c", "echo 'hello it`s ONBUILD'"]
+  ```
+  ```Dockerfile
+  FROM sample:latest
+  
+  CMD ["/bin/bash", "-c", "echo 'hello i`m another'"]
+  ```
+  ```
+  ```
+  # another sample
+  
