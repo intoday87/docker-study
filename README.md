@@ -273,3 +273,4 @@
   ```
   주로 이미지내 심어진 프로그램을 deploy하는 명령(ADD, COPY)을 입력한다
   `ONBUILD ADD index.html /var/www/html/`
+  어찌보면 당연한 얘기지만 ONBUILD 실행 기준은 이 이미지를 base로 하는 이미지 생성시 기준이다. 즉 이 이미지를 base로 생성하려는 Dockerfile 위치 기준으로 동작한다
