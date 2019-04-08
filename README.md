@@ -264,7 +264,7 @@
   # 2초 간격으로 업데이트하는 경우
   $ docer run -it sample -d 2
   ```
-- ONBUILD [실행하고자 하는 커맨드]
+- `ONBUILD [실행하고자 하는 커맨드]`
   이미지 내의 다음 build에서 실행되는 커맨드를 설정하는 명령어
   한 Dockerfile에서 ONBUILD 명령으로 커맨드를 실행하도록 설정하고, build하여 이미지를 생성하고, 생성된 이미지를 다른 Dockerfile에서 베이스이미지로 설정하여 build하면, ONBUILD 커맨드가 실행된다
   ```Dockerfile
@@ -283,3 +283,11 @@
   주로 이미지내 심어진 프로그램을 deploy하는 명령(ADD, COPY)을 입력한다
   `ONBUILD ADD index.html /var/www/html/`
   어찌보면 당연한 얘기지만 ONBUILD 실행 기준은 이 이미지를 base로 하는 이미지 생성시 기준이다. 즉 이 이미지를 base로 생성하려는 Dockerfile 위치 기준으로 동작한다
+- `ENV [key] [value]` or `ENV [key]=[value]`
+  - key 다음에 입력된 문자열을 하나의 값으로 인식한다. 공백이나 " " 등과 같은 character 값도 모두 문자로 인식
+  - ```Dockerfile
+    ENV myName "nick wilde"
+    ENV myOder Cola Cider Soju
+    ENV myNickName nick
+    ```
+    
