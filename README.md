@@ -305,3 +305,14 @@
     WORKDIR third
     RUN ["pwd"]
     ```
+  - `ENV`를 이용해 설정할수도 있다
+    ```Dockerfile
+    FROM centos
+
+    ENV DIRPATH /first
+    ENV DIRNAME /second
+
+    WORKDIR $DIRPATH/$DIRNAME
+
+    RUN ["pwd"]
+    ```
