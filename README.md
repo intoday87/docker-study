@@ -316,3 +316,13 @@
 
     RUN ["pwd"]
     ```
+- `USER [adduser로 설정한 유저명]`
+  - `docker build` 실행시 유저 설정 전 후 비교
+    ```Dockerfile
+    FROM centos
+
+    RUN ["adduser", "nick"]
+    RUN ["whoami"]
+    USER nick
+    RUN ["whoami"]
+    ```
