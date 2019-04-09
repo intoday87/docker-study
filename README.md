@@ -290,4 +290,9 @@
     ENV myOder Cola Cider Soju
     ENV myNickName nick
     ```
-    
+  - `ENV` 명령어에 여러 환경변수 집어넣기
+    ```Docker
+    ENV NICK=123, \
+        WILDE="456", \
+        JOO=7\ 8\ 9
+    ```
