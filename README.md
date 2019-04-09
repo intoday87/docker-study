@@ -326,3 +326,17 @@
     USER nick
     RUN ["whoami"]
     ```
+- `LABEL`설정하고 `docker inspect`로 보기
+  - `docker build -t sample-label .`
+    ```Dockerfile
+    FROM centos
+
+    LABEL title="webAPServerImage"
+    LABEL version="1.0"
+    LABEL description="This image is WebApplicationServer \
+    for java EE."
+    ```
+  - `docker inspect --format="{{ .Config.Labels }}" sample-label`
+    ```/bin/bash
+    map[org.label-schema.schema-version:1.0 org.label-schema.vendor:CentOS title:webAPServerImage version:1.0 description:This image is WebApplicationServer for java EE. org.label-schema.build-date:20190305 org.label-schema.license:GPLv2 org.label-schema.name:CentOS Base Image]
+    ```
