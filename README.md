@@ -296,3 +296,12 @@
         WILDE="456", \
         JOO=7\ 8\ 9
     ```
+- `WORKDIR [작업 디렉터리 경로]`
+  - `docker build`를 하게 되면 `pwd` 경로는 `/first/second/third`가 출력된다
+    ```Dockerfile
+    FROM centos
+    WORKDIR /first
+    WORKDIR second
+    WORKDIR third
+    RUN ["pwd"]
+    ```
