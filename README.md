@@ -340,3 +340,17 @@
     ```/bin/bash
     map[org.label-schema.schema-version:1.0 org.label-schema.vendor:CentOS title:webAPServerImage version:1.0 description:This image is WebApplicationServer for java EE. org.label-schema.build-date:20190305 org.label-schema.license:GPLv2 org.label-schema.name:CentOS Base Image]
     ```
+- `EXPOSE` 설정으로 host에 port 노출하기
+  ```Dockerfile
+     FROM centos
+
+     RUN yum -y install httpd
+
+     COPY index.html /var/www/html
+
+     CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+
+     # EXPOSE로 컨테이너가 사용하는 포트를 host에 노출한다는 것이지 host의 80 포트로 매칭해서 열어준다는 의미는 아니다
+     # 결국 docker run -p 8080:80 으로 해줘야 호스트에서 컨테이너로 포트가 연결된다
+     EXPOSE 80
+  ```
