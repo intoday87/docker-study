@@ -370,8 +370,8 @@
 
       EXPOSE 80
     ```
-    - `.dockerignore`에 복사대상 제외하기
-      ```.dockerignore
-          html/index.html
-      ```
-      이렇게 하고 빌드 후 컨테이너에 접속해서 `/var/www/html`을 보면 `index.html`이 없다
+  - `.dockerignore`에 복사대상 제외하기
+    ```.dockerignore
+        html/index.html
+    ```
+    이렇게 하고 빌드 후 컨테이너에 접속해서 `/var/www/html`을 보면 `index.html`이 없다
