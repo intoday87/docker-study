@@ -354,3 +354,24 @@
      # 결국 docker run -p 8080:80 으로 해줘야 호스트에서 컨테이너로 포트가 연결된다
      EXPOSE 80
   ```
+- `ADD`로 호스트 파일과 디렉터리 추가
+  - 책에는 디렉터리도 추가할 수 있다고 하는데 생각대로 안된다. 구글링 해봐야함
+    ```Dockerfile
+      FROM centos
+
+      RUN yum -y install httpd
+
+      WORKDIR /var/www
+
+      # add ["www.example.com/index.html", "./html"] 이와 같은 원격 요청 파일도 추가 가능하다
+      ADD ["html/", "./html"]
+
+      CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+
+      EXPOSE 80
+    ```
+    - `.dockerignore`에 복사대상 제외하기
+      ```.dockerignore
+          html/index.html
+      ```
+      이렇게 하고 빌드 후 컨테이너에 접속해서 `/var/www/html`을 보면 `index.html`이 없다
