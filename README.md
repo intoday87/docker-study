@@ -390,9 +390,11 @@
        
        VOLUME /var/log/httpd
     ```
-    `docker build -t log-image .`
-    `docker run -it --name log-container log-image`
     ```/bin/bash
+    $ docker build -t log-image .
+    ...
+    $ docker run -it --name log-container log-image
+    ...
     # tail -f /var/log/httpd/access.log
     ```
     web-image 
@@ -407,7 +409,12 @@
 
       VOLUME /var/log/httpd
     ```
-    `docker build -t web-image .`
-    `docker run -d --name web-container -p 8080:80 --volume-from log-container web-image`
-    하고 `curl localhost:8080` 해보면 log-container foreground에서 로그가 tailing되는걸 볼 수 있다
+    ```/bin/bash
+    docker build -t web-image .
+    ...
+    docker run -d --name web-container -p 8080:80 --volume-from log-container web-image
+    ...
+    curl localhost:8080
+    ```
+    log-container foreground에서 로그가 tailing되는걸 볼 수 있다
     
