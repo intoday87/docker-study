@@ -377,3 +377,37 @@
     이렇게 하고 빌드 후 컨테이너에 접속해서 `/var/www/html`을 보면 `index.html`이 없다
 - `COPY [호스트의 파일경로] [Docker 이미지 파일 경로]`
   - `ADD`와 비슷한데 `ADD`는 압축풀기 원격 파일 다운로드가 가능하다. 이에 반해 `COPY`명령은 호스트 파일을 이미지 파일 시스템에 복사하는 작업만 수행
+- `VOLUME [docker image 파일 경로]`
+  - 로그 컨테이너를 만들어 `VOLUME`으로 마운트 포인트를 생성하면 호스트와 다른 컨테이너에서 볼륨을 외부 마운트 할 수 있다
+  - 웹 서버 컨터에너에서 로그 컨테이너로 로그를 쌓는 예제
+    log-image
+    ```Dockerfile
+       FROM centos
+       
+       MAINTAINER 0.1 sample@email.com
+       
+       RUN ["mkdir", "/var/log/httpd"]
+       
+       VOLUME /var/log/httpd
+    ```
+    `docker build -t log-image .`
+    `docker run -it --name log-container log-image`
+    ```/bin/bash
+    # tail -f /var/log/httpd/access.log
+    ```
+    web-image 
+    ```Dockerfile
+      FROM centos
+
+      MAINTAINER 0.1 sample@email.com
+
+      RUN ["yum", "install", "-y", "httpd"]
+
+      CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+
+      VOLUME /var/log/httpd
+    ```
+    `docker build -t web-image .`
+    `docker run -d --name web-container -p 8080:80 --volume-from log-container web-image`
+    하고 `curl localhost:8080` 해보면 log-container foreground에서 로그가 tailing되는걸 볼 수 있다
+    
