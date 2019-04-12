@@ -417,4 +417,6 @@
     curl localhost:8080
     ```
     log-container foreground에서 로그가 tailing되는걸 볼 수 있다
+- github과 연동한 automated build
+  - https://docs.docker.com/docker-hub/builds/
     
