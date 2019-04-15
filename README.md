@@ -419,4 +419,14 @@
     log-container foreground에서 로그가 tailing되는걸 볼 수 있다
 - github과 연동한 automated build
   - https://docs.docker.com/docker-hub/builds/
-    
+- private docker registry 구축
+  - private한 네트워크 환경 정보 이런 것들이 이미지에 포함될 수 있어서 공용보다는 private registry에 올려서 사용
+  - registry 자체도 docker image로 받아서 바로 띄울 수 있다. 이래서 docker 쓰는 듯
+  - registry 찾기
+    ```/bin/bash
+    $ docker search registry:latest
+    NAME                                    DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
+    registry                                The Docker Registry 2.0 implementation for s…   2517                [OK]
+    ```
+  - 책에서는 `registry:2.0`로 설치 하지 않으면 1.x가 깔린다고 되어 있지만 현재는 위 출력 결과를 보면 latest가 2.0인걸로 보인다
+  - 
