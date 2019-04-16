@@ -429,4 +429,25 @@
     registry                                The Docker Registry 2.0 implementation for s…   2517                [OK]
     ```
   - 책에서는 `registry:2.0`로 설치 하지 않으면 1.x가 깔린다고 되어 있지만 현재는 위 출력 결과를 보면 latest가 2.0인걸로 보인다
-  - 
+  - `docker run -d -p 5000:5000 registry`
+  - 이미지 업로드
+    ```Dockerfile
+    FROM centos
+
+    MAINTAINER 0.1 sample@email.com
+
+    RUN ["yum", "install", "-y", "httpd"]
+
+    CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
+    ```
+  - `docker build -t webserver .`
+  - private 네트워크의 Docker 레지스트리에 업로드하기 위해서는 다음 룰에 따라 이미지에 태그를 붙여야 한다
+    `docker tag [로컬 이미지명] [Docker repository의 ID addresss 또는 호스트명:포트 번호]/[이미지명]`
+    `docker tag webserver localhost:5000/httpd` webserver와 localhost:5000/httpd가 이미지 아이디가 같다
+  - `docker push localhost:5000/httpd` 로컬 private repository로 업로드
+  - 이미지 삭제
+    `docker rmi webserver`
+    `docker rmi localhost:5000/httpd`
+  - 이미지 다운로드
+    `docker pull localhost:5000/httpd`
+  - `docker images`를 통해 다운로드된 것을 확인해본다
