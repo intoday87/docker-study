@@ -451,3 +451,52 @@
   - 이미지 다운로드
     `docker pull localhost:5000/httpd`
   - `docker images`를 통해 다운로드된 것을 확인해본다
+## Docker Compose
+  - 여러 컨테이너를 일괄로 관리할 수 있다
+  - `docker run --link [접속하고자 하는 컨테이너명:alias명] [이미지명] [실행 커맨드]` 컨테이너에서 다른 컨테이너로 연결 가능하도록 설정할 수 있다
+    ```/bin/bash
+    $ docker run -d --name dbserver postgres
+    $ docker run -it --name appserver --link dbserver:pg centos /bin/bash
+    # printenv | grep PG
+    PG_ENV_PG_MAJOR=11
+    PG_PORT=tcp://172.17.0.3:5432
+    PG_PORT_5432_TCP_ADDR=172.17.0.3
+    PG_PORT_5432_TCP_PROTO=tcp
+    PG_NAME=/appserver/pg
+    PG_ENV_PG_VERSION=11.2-1.pgdg90+1
+    PG_ENV_GOSU_VERSION=1.11
+    PG_ENV_PGDATA=/var/lib/postgresql/data
+    PG_ENV_LANG=en_US.utf8
+    PG_PORT_5432_TCP_PORT=5432
+    PG_PORT_5432_TCP=tcp://172.17.0.3:5432
+    # ping $PG_PORT_5432_TCP_ADDR
+    PING 172.17.0.3 (172.17.0.3) 56(84) bytes of data.
+    64 bytes from 172.17.0.3: icmp_seq=1 ttl=64 time=0.061 ms
+    64 bytes from 172.17.0.3: icmp_seq=2 ttl=64 time=0.047 ms
+    ^C
+    --- 172.17.0.3 ping statistics ---
+    2 packets transmitted, 2 received, 0% packet loss, time 1069ms
+    rtt min/avg/max/mdev = 0.047/0.054/0.061/0.007 ms
+    # cat /etc/hosts
+    127.0.0.1	localhost
+    ::1	localhost ip6-localhost ip6-loopback
+    fe00::0	ip6-localnet
+    ff00::0	ip6-mcastprefix
+    ff02::1	ip6-allnodes
+    ff02::2	ip6-allrouters
+    172.17.0.3	pg e8b53e44b2fb dbserver
+    172.17.0.4	43e37f40b966
+    # ping pg
+    PING pg (172.17.0.3) 56(84) bytes of data.
+    64 bytes from pg (172.17.0.3): icmp_seq=1 ttl=64 time=0.108 ms
+    64 bytes from pg (172.17.0.3): icmp_seq=2 ttl=64 time=0.068 ms
+    64 bytes from pg (172.17.0.3): icmp_seq=3 ttl=64 time=0.046 ms
+    64 bytes from pg (172.17.0.3): icmp_seq=4 ttl=64 time=0.049 ms
+    64 bytes from pg (172.17.0.3): icmp_seq=5 ttl=64 time=0.049 ms
+    64 bytes from pg (172.17.0.3): icmp_seq=6 ttl=64 time=0.046 ms
+    ^C
+    --- pg ping statistics ---
+    6 packets transmitted, 6 received, 0% packet loss, time 5167ms
+    rtt min/avg/max/mdev = 0.046/0.061/0.108/0.022 ms
+    ```
+    
