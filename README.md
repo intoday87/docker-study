@@ -499,4 +499,4 @@
     6 packets transmitted, 6 received, 0% packet loss, time 5167ms
     rtt min/avg/max/mdev = 0.046/0.061/0.108/0.022 ms
     ```
-    
+    -*단, 링크 기능은 동일한 호스트 머신에서 구동 중인 컨테이너 사이에서만 액세스할 수 있으므로 주의해야 한다*-
