@@ -523,5 +523,27 @@
         build: .
         ```
     - `docker-compose up` 커맨드를 실행
-      
-      
+    - 환경변수
+      ```docker-compose.yml
+      dbserver:
+        image: mysql
+        environment:
+         - MYSQL_ROOT_PASSWORD=1234
+      ```
+      별도 파일 로드. 여러파일은 리스트로 가능
+      현재 경로에 `envfile`
+      ```envfile
+      MYSQL_ROOT_PASSWORD=1234
+      ```
+      ```docker-compose.yml
+      dbserver:
+       image: mysql
+       env_file: envfile
+      ```
+      ```docker-compose.yml
+      dbserver:
+        image: mysql
+        env_file:
+         - ./envfile
+         - ./envfile2
+      ```
