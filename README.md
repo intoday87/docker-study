@@ -522,6 +522,6 @@
         webserver:
         build: .
         ```
-    - `docker-compose` 커맨드를 실행
+    - `docker-compose up` 커맨드를 실행
       
       
