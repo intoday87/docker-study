@@ -500,3 +500,28 @@
     rtt min/avg/max/mdev = 0.046/0.061/0.108/0.022 ms
     ```
     -*단, 링크 기능은 동일한 호스트 머신에서 구동 중인 컨테이너 사이에서만 액세스할 수 있으므로 주의해야 한다*-
+  - docker-compose.yml
+    - 베이스 이미지 지정
+      ```docker-compose.yml
+      webserver:
+        image: ubuntu
+      ```
+    - Docker Hub의 이미지를 지정하는 경우
+      ```docker-compose.yml
+      webserver:
+        image: nick/dockersample:1.0
+      ```
+    - Dockerfile에 이미지 구성을 저장하고 이를 자동으로 build하여 베이스 이미지로 지정할 수도 있다
+      ```/bin/bash
+      .
+      ├── Dockerfile
+      └── docker-compose.yml
+      ```
+      - build 지정
+        ```docker-compose.yml
+        webserver:
+        build: .
+        ```
+    - `docker-compose` 커맨드를 실행
+      
+      
