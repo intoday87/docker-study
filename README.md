@@ -551,7 +551,7 @@
       개별 컨테이너에 이름을 붙여주려면 docker-compose.yml의 개별 네임스페이스 하위로 아래와 같이 표기 한다
       `container_name: web-container`
     - 컨테이너 라벨 지정
-      `docker inspect`를 이용해 라벨을 확인할 수 있다
+      `docker inspect [컨테이너 이름]`를 이용해 라벨을 확인할 수 있다
       ```docker-compose.yml
       # 배열 형식으로 지정
       webwerver:
