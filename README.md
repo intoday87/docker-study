@@ -531,7 +531,7 @@
          - MYSQL_ROOT_PASSWORD=1234
       ```
       별도 파일 로드. 여러파일은 리스트로 가능
-      현재 경로에 `envfile`
+      현재 경로에 `envfile`, 경로는 상대경로든 절대경로든 상관없다
       ```envfile
       MYSQL_ROOT_PASSWORD=1234
       ```
@@ -547,3 +547,6 @@
          - ./envfile
          - ./envfile2
       ```
+    - 컨테이너 이름
+      개별 컨테이너에 이름을 붙여주려면 docker-compose.yml의 개별 네임스페이스 하위로 아래와 같이 표기 한다
+      `container_name: web-container`
