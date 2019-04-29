@@ -562,3 +562,15 @@
       webserver:
        com.example.description: "Accounting webapp"
       ```
+    - `docker-compose`의 커맨드
+      - `up`: 컨테이너 생성 및 구동
+      - `ps`: 컨테이너 목록 확인. docker-compose.yml 있는 경로에 해당
+      - `scale`: 생성할 컨테이너 개수 지정
+        - `The scale command is deprecated. Use the up command with the --scale flag instead.`
+        - `docker-compose up --scale 'db-container=2'
+        - scale을 시도해봤지만 컨테이너당 하나의 호스트 포트로 매칭된 컨테이너를 여러개 띄울수도 없을것 같고 실제로 scale을 적용해보면 한 컨테이너가 떳다가 죽고(done이라고 표시) 다시 뜬다. scale이 필요하면 적용법을 더 봐야 할 듯
+      - `start`
+      - `stop`
+      - `restart`
+      - `kill [옵션] [서비스이름]`: `docker-compose kill 'db-container'`라고 치면 `db-container`라는  서비스 이름을 찾지 못한다
+      - `rm`
