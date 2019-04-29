@@ -564,6 +564,7 @@
       ```
     - `docker-compose`의 커맨드
       - `up`: 컨테이너 생성 및 구동
+        - `f`옵션으로 별도 파일 위치 지정 가능
       - `ps`: 컨테이너 목록 확인. docker-compose.yml 있는 경로에 해당
       - `scale`: 생성할 컨테이너 개수 지정
         - `The scale command is deprecated. Use the up command with the --scale flag instead.`
@@ -572,5 +573,5 @@
       - `start`
       - `stop`
       - `restart`
-      - `kill [옵션] [서비스이름]`: `docker-compose kill 'db-container'`라고 치면 `db-container`라는  서비스 이름을 찾지 못한다
+      - `kill [옵션] [서비스이름]`: `docker-compose kill dbsever` `dbserver`는 `docker-compose.yml`에 각 컨테이너별 최상위 루트 네임스페이스 이름 -> 서비스 이름
       - `rm`
