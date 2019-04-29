@@ -564,7 +564,8 @@
       ```
     - `docker-compose`의 커맨드
       - `up`: 컨테이너 생성 및 구동
-        - `f`옵션으로 별도 파일 위치 지정 가능
+        - `-f`: 별도 파일 위치 지정 가능
+        - `-d`: 백그라운드 실행 
       - `ps`: 컨테이너 목록 확인. docker-compose.yml 있는 경로에 해당
       - `scale`: 생성할 컨테이너 개수 지정
         - `The scale command is deprecated. Use the up command with the --scale flag instead.`
