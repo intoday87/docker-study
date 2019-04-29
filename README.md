@@ -522,6 +522,13 @@
         webserver:
         build: .
         ```
+    - 컨테이너 내부에만 공개하는 포트 지정
+      ```docker-compose.yml
+      webserver:
+        from:centos
+        expose:
+         - "3000"
+      ```
     - `docker-compose up` 커맨드를 실행
     - 환경변수
       ```docker-compose.yml
