@@ -583,3 +583,5 @@
       - `restart`
       - `kill [옵션] [서비스이름]`: `docker-compose kill dbsever` `dbserver`는 `docker-compose.yml`에 각 컨테이너별 최상위 루트 네임스페이스 이름 -> 서비스 이름
       - `rm`
+      - 'run'
+        - `docker-compose up`을 해서 `docker-compose.yml`을 띄운 후, `docker-compose run webserver /bin/bash`로 실행하면 `docker-compose ps`시 컨테이너가 webserver로 두 개가 뜨게 된다. 처음에는 떠 있는 webserver 서비스를 접속할 수 있게 커맨드를 실행하는줄 알았다
