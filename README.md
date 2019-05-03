@@ -570,7 +570,9 @@
        com.example.description: "Accounting webapp"
       ```
     - 볼륨 마운트(volumes, volumes_from)
-      `volume_from`으로 마운트할려면 마운트 서비스가 먼저 선언되어야 한다
+      `volume_from`으로 마운트할려면 컨테이너 이름 또는 서비스(docker-compose 최상위 루트 네임스페이스명)을 입력하면된다
+      컨테이너명으로 하는 경우 container를 삭제하고 `docker-compose up`을 실행하면 컨테이너가 없다고 실행을 못한다
+      서비스 이름으로 하는걸 권장
       ```docker-compose.yml
       dbserver:
         ...
@@ -580,7 +582,7 @@
       webserver:
         ...
         volumes_from:
-          - db-container
+          - dbserver
       ```
     - `docker-compose`의 커맨드
       - `up`: 컨테이너 생성 및 구동
