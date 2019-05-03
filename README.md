@@ -569,6 +569,19 @@
       webserver:
        com.example.description: "Accounting webapp"
       ```
+    - 볼륨 마운트(volumes, volumes_from)
+      `volume_from`으로 마운트할려면 마운트 서비스가 먼저 선언되어야 한다
+      ```docker-compose.yml
+      dbserver:
+        ...
+        container_name: db-container
+        volumes:
+         - /var/lib/mysql
+      webserver:
+        ...
+        volumes_from:
+          - db-container
+      ```
     - `docker-compose`의 커맨드
       - `up`: 컨테이너 생성 및 구동
         - `-f`: 별도 파일 위치 지정 가능
