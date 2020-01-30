@@ -213,6 +213,7 @@
   CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
   ```
 - 데몬 실행(ENTRYPOINT)
+  - 기본 실행 프로세스를 지정한다. 'go'로 지정하게되면 `docker container run example version` => `# go version`과 동일
   - CMD와 사용방법은 동일하다
   ```Dockerfile
   ENTRYPOINT ["/usr/sbin/httpd", "-D", "FOREGROUND"]
