@@ -87,6 +87,7 @@
     Successfully built 7fcc1bf1d4e7
     Successfully tagged sample:3.0
     ```
+    - `maintainer` 속성은 deprecated
 - Dockerfile로 apache 띄우기
   ```Dockerfile
   # 베이스 이미지 설정
