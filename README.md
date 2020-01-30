@@ -12,6 +12,7 @@
 - `docker start|stop|restart|pause|unpause {컨테이너id}` 이름 그대로 역할
 - `docker attach {컨테이너 이름,id}` 백그라운드로 실행중인 컨테이너에 접속할려고 할 때. nginx를 컨테이너로 띄운 경우에는 어플리케이션이기 때문에 attach로 접속하면 nginx를 구동하고 있는 os로의 접속이 아니라 어플리케이션으로 접속하게 된다
 - `docker exec -it nginx1 /bin/bash` nginx를 구동하고 있는 os로 접속할때 exec로 명령을 전달한다
+  - nginx1 대신에 `docker container ls -q`로 컨테이너 아이디(해시)를 얻어서 호출 가능
 - `docker top` 컨테이너에서 실행중인 프로세스를 출력한다
 - `dockr rm {컨테이너 이름,id}` 컨테이너 삭제
 - `docker port` 컨테이너와 호스트의 포트매칭 정보 출력
