@@ -610,3 +610,27 @@
 - `CMD`는 `ENTRYPOINT`에 전달되는 인자를 정의
 `CMD` 명령어를 사용해 이미지가 실행될 때 실행할 명령어를 지정할 수 있지만, 올바른 방법은 `ENTRYPOINT` 명령어로 실행하고 기본 인자를 정의하려는 경우에만 CMD를 지정하는 것이다. 그러면 아무런 인자도 지정하지 않고 이미지를 실행할 수 있다.
   `docker run <image> <arguments>`로 추가 인자를 지정해 Dockerfile 안의 `CMD`에 정의된 값을 재정의 할 수 있다.
+
+## shell과 exec 형식 간의 차이점
+- shell 형식 - `ENTRYPOINT node app.js`
+- exec 형식 - `ENTRYPOINT ["node", "app.js"]`
+
+차이점은 내부에서 정의된 명령을 shell로 호출하는지 여부
+
+프로세스 목록을 나열해 차이를 확인할 수 있다.
+- exec 형식으로 실행한 경우
+```zsh
+$ docker exec exec-container ps x
+PID TTY STAT TIME COMMAND
+  1 ?   Ssl  0:00 node app.js
+ 12 ?   Rs   0:00 ps x
+```
+- shell 형식으로 실행한 경우
+```zsh
+$ docker exec shell-container ps x
+PID TTY STAT TIME COMMAND
+  1 ?   Ss   0:00 /bin/sh -c node app.js
+  7 ?   Sl   0:00 node app.js
+ 12 ?   Rs   0:00 ps x
+```
+보는 것처럼 메인 프로세스(PID 1)은 node 프로세스가 아닌 shell 프로세스다. 노드 프로세스(PID 7)는 shell에서 시작된다. shell 프로세스는 불필요하므로 `ENTRYPOINT` 명령에서 exec 형식을 사용해 실행
