@@ -603,3 +603,10 @@
       - `rm`
       - 'run'
         - `docker-compose up`을 해서 `docker-compose.yml`을 띄운 후, `docker-compose run webserver /bin/bash`로 실행하면 `docker-compose ps`시 컨테이너가 webserver로 두 개가 뜨게 된다. 처음에는 떠 있는 webserver 서비스를 접속할 수 있게 커맨드를 실행하는줄 알았다
+
+
+## `CMD`, `ENTRYPOINT`의 적절한 사용 - kubernetes in action 읽으면서 헷갈려서 다시 정리
+- `ENTRYPOINT`는 컨테이너가 시작될 때 호출될 명렁어를 정의
+- `CMD`는 `ENTRYPOINT`에 전달되는 인자를 정의
+`CMD` 명령어를 사용해 이미지가 실행될 때 실행할 명령어를 지정할 수 있지만, 올바른 방법은 `ENTRYPOINT` 명령어로 실행하고 기본 인자를 정의하려는 경우에만 CMD를 지정하는 것이다. 그러면 아무런 인자도 지정하지 않고 이미지를 실행할 수 있다.
+  `docker run <image> <arguments>`로 추가 인자를 지정해 Dockerfile 안의 `CMD`에 정의된 값을 재정의 할 수 있다.
