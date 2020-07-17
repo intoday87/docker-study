@@ -637,4 +637,11 @@ PID TTY STAT TIME COMMAND
 
 ## multistage build
 - [참고](https://docs.docker.com/develop/develop-images/multistage-build/)
-- `from`을 여러개 써서 각 스테이지에서 만든 artifact를 다음 스테이지에서 사용하도록 함. 그렇게 되지 않으면 여러개 Dockerfile을 만들고 shell로 각각 Dockerfile로 부터 얻은 artifact를 다음 Dockerfile에서 참고 하도록 짜야함. 각각 from 스테이지로부터 얻은 artifact를 제외하고 마지막 저장되는 이미지에 불필요한 각 스테이지를 저장하지 않음. 필요한 artifact를 얻기 위해 하나의 Dockerfile에서 여러개의 from을 통해 각 스테이지가 artifact외에 불필요한 단계를 저장하는것을 걱정할 필요없이 필요한 artifact만 하나의 Dockerfile에서 얻을수 있도록 하기 위함
+- `FROM`을 여러개 써서 각 스테이지에서 만든 artifact를 다음 스테이지에서 사용하도록 함. 그렇게 되지 않으면 여러개 Dockerfile을 만들고 shell로 각각 Dockerfile로 부터 얻은 artifact를 다음 Dockerfile에서 참고 하도록 짜야함. 각각 `FROM` 스테이지로부터 얻은 artifact를 제외하고 마지막 저장되는 이미지에 불필요한 각 스테이지를 저장하지 않음. 필요한 artifact를 얻기 위해 하나의 Dockerfile에서 여러개의 `FROM`을 통해 각 스테이지가 artifact외에 불필요한 단계를 저장하는것을 걱정할 필요없이 필요한 artifact만 하나의 Dockerfile에서 얻을수 있도록 하기 위함
+- 각 `FROM` 스테이지에 이름을 붙여서 alias로 사용할 수 있다. `AS name`으로 이름을 붙여주지 않으면 처음 시작하는 `FROM`스테이지는 0부터 시작한다
+  ```Dockerfile
+    FROM image AS builder
+    ...
+    FROM image-n
+    COPY --from builder ./src ./app/src
+  ```
